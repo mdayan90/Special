@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, My Love! ❤️</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for the Inter font and basic body styling */
+        /* General Body Styles */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #fce7f3; /* Light pink background for a festive feel */
@@ -105,11 +104,62 @@
             align-items: center;
             justify-content: center;
         }
+
+        /* Styles for the welcome screen */
+        #welcome-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%; /* Take full width */
+            background-color: #fce7f3; /* Light pink background */
+            position: fixed; /* Fix to viewport */
+            top: 0;
+            left: 0;
+            z-index: 20000; /* Ensure it's on top */
+            background-image: linear-gradient(to bottom right, #fce7f3, #e8d0f0, #d0b8e8); /* Matching gradient */
+        }
+
+        /* Mute/Unmute button styling */
+        .audio-control {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px; /* Fully rounded */
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 10000; /* Above everything */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .audio-control:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
-    <!-- Header Section -->
-    <header class="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 shadow-xl text-center">
+
+    <div id="welcome-screen">
+        <div class="text-center p-8 bg-white shadow-2xl rounded-xl transform scale-100 hover:scale-105 transition-transform duration-500 ease-in-out">
+            <h1 class="text-6xl font-extrabold text-pink-600 mb-8 animate-pulse">
+                Hello, My Sweetheart!
+            </h1>
+            <button
+                id="enterButton"
+                class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full text-2xl shadow-lg transform hover:scale-110 transition duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300"
+            >
+                Enter, Sweetheart! ✨
+            </button>
+        </div>
+    </div>
+
+    <header id="main-header" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 shadow-xl text-center hidden">
         <div class="container mx-auto">
             <h1 class="text-5xl font-extrabold tracking-tight mb-2 animate-pulse">
                 Happy Birthday, My Dearest!
@@ -118,17 +168,13 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="container mx-auto p-6 flex-grow flex items-center justify-center">
+    <main id="main-content" class="container mx-auto p-6 flex-grow flex items-center justify-center hidden">
 
-        <!-- Birthday Message Section -->
         <section id="birthday-message-section" class="page-section active bg-white p-10 shadow-2xl rounded-xl max-w-3xl w-full text-center transform hover:scale-105 transition-transform duration-500 ease-in-out">
             <h3 class="text-4xl font-bold text-pink-600 mb-6">To My Incredible <Br>Golu-mulo🥰, Sara!</h3>
 
-            <!-- Photo Slider -->
             <div class="mb-8 slider-container">
                 <div class="slider-images" id="imageSlider">
-                    <!-- IMPORTANT: Replace these local paths with public image URLs if sharing online -->
                     <img src="SINGLE4.jpeg" alt="Special Photo 1">
                     <img src="SINGLE2.jpeg" alt="Special Photo 2">
                     <img src="SINGLE3.jpeg" alt="Special Photo 3">
@@ -154,7 +200,6 @@
                 "MD AYAN HASHMI ❤️"
             </p>
 
-            <!-- Special message for July 20th -->
             <div id="special-date-message" class="hidden mt-8 p-4 bg-yellow-100 text-yellow-800 border border-yellow-300 rounded-lg shadow-inner">
                 <p class="text-lg font-bold">🎉 IT'S YOUR BIRTHDAY TODAY! 🎉</p>
                 <p>Hope you're having an absolutely wonderful day, my love!</p>
@@ -165,11 +210,9 @@
             </button>
         </section>
 
-        <!-- Quiz Section -->
         <section id="quiz-section" class="page-section bg-white p-10 shadow-2xl rounded-xl max-w-3xl w-full">
             <h2 class="text-4xl font-bold text-pink-600 mb-6 text-center">A Little Quiz for My Love!</h2>
             <form id="birthdayQuiz" class="space-y-6">
-                <!-- Question 1 -->
                 <div class="quiz-question mb-4 p-4 bg-pink-50 rounded-lg shadow-sm">
                     <p class="text-lg font-semibold text-gray-800 mb-2">1. Humara first Kiss Kaha hua hai😄?</p>
                     <div class="flex flex-col space-y-2">
@@ -188,7 +231,6 @@
                     </div>
                 </div>
 
-                <!-- Question 2 -->
                 <div class="quiz-question mb-4 p-4 bg-pink-50 rounded-lg shadow-sm">
                     <p class="text-lg font-semibold text-gray-800 mb-2">2. Pyaar hone se pehle kitna gussa aata tha mere pr jb hum arham ko maarte the😂?"</p>
                     <div class="flex flex-col space-y-2">
@@ -207,7 +249,6 @@
                     </div>
                 </div>
 
-                <!-- Question 3 -->
                 <div class="quiz-question mb-4 p-4 bg-pink-50 rounded-lg shadow-sm">
                     <p class="text-lg font-semibold text-gray-800 mb-2">3. Sach batana Mohtarma app apne aap ko fit sirf mere liye rakhna chahti ho na😂??</p>
                     <div class="flex flex-col space-y-2">
@@ -226,7 +267,6 @@
                     </div>
                 </div>
 
-                <!-- Question 4 -->
                 <div class="quiz-question mb-4 p-4 bg-pink-50 rounded-lg shadow-sm">
                     <p class="text-lg font-semibold text-gray-800 mb-2">4. Mujse Icecream kyu nhi share krna chahti Apna😄?</p>
                     <div class="flex flex-col space-y-2">
@@ -251,7 +291,6 @@
             </form>
         </section>
 
-        <!-- Score Card Section -->
         <section id="score-card-section" class="page-section bg-white p-10 shadow-2xl rounded-xl max-w-3xl w-full text-center">
             <h2 class="text-4xl font-bold text-pink-600 mb-6">Quiz Results! 🎉</h2>
             <p id="quiz-score" class="text-3xl font-extrabold text-purple-700 mb-4">Your Score: 0/4</p>
@@ -267,24 +306,16 @@
                 </p>
             </div>
 
-            <!-- Quiz Review Section -->
             <div id="quiz-review" class="text-left mt-8 p-6 bg-gray-50 rounded-lg shadow-inner">
                 <h3 class="text-2xl font-bold text-purple-600 mb-4">Your Answers:</h3>
-                <!-- Answers will be dynamically inserted here -->
-            </div>
+                </div>
 
-            <!-- Photo Frame -->
             <div class="relative w-full max-w-md mx-auto mt-8 mb-8 border-8 border-purple-300 rounded-xl shadow-xl overflow-hidden">
-                <!-- IMPORTANT: Replace this local path with a public image URL if sharing online -->
                 <img src="TWO.jpeg" alt="Our Couple Photo" class="w-full h-auto object-cover rounded-md">
                 <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 text-white text-2xl font-bold opacity-0 hover:opacity-100 transition-opacity duration-300">
                     <p>Our Beautiful Memorie</p>
                 </div>
             </div>
-            <!-- <p class="text-sm text-gray-500 mt-2">
-                (You can replace this with a lovely couple photo of yours!)
-            </p> -->
-
             <button id="backToBirthdayButton" class="mt-8 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition duration-300 focus:outline-none focus:ring-4 focus:ring-purple-300">
                 Back to Birthday Message
             </button>
@@ -292,40 +323,44 @@
 
     </main>
 
-    <!-- Footer Section -->
-    <footer class="bg-gray-800 text-white p-4 mt-8 shadow-inner text-center">
+    <footer id="main-footer" class="bg-gray-800 text-white p-4 mt-8 shadow-inner text-center hidden">
         <div class="container mx-auto">
             <p>&copy; 2025 A Special Day Just For You!</p>
             <p class="text-sm mt-2">Made with love and wishes.</p>
         </div>
     </footer>
 
+    <audio id="birthdaySong" src="Humnava Mere Jubin Nautiyal 128 Kbps.mp3" loop></audio>
+
+    <button id="audioControl" class="audio-control hidden">
+        <span id="audioIcon">🔊</span> <span id="audioText">Unmuted</span> </button>
+
     <script>
-        // Quiz Questions and Answers
+        // Quiz Questions and Answers (unchanged)
         const quizQuestions = [
             {
                 question: "Humara first Kiss Kaha hua hai?",
                 options: { a: "Tumhare Ghar mai", b: "Mere ghar mai", c: "Mamma ke ghar mai" },
-                answer: "c" // You can change this to the correct answer for your girlfriend!
+                answer: "c"
             },
             {
                 question: "Pyaar hone se pehle kitna gussa aata tha mere pr jb hum arham ko maarte the😂?",
                 options: { a: "Thora sa", b: "Tabhi bhi pyaar krte the😂", c: "Bht gussa krte the" },
-                answer: "a" // You can change this!
+                answer: "a"
             },
             {
                 question: "Sach batana Mohtarma app apne aap ko fit sirf mere liye rakhna chahti ho na😂??",
                 options: { a: "HAAA😂", b: "HAAA😂", c: "Chup rahiye Aap😂😂" },
-                answer: "b" // You can change this!
+                answer: "b"
             },
             {
                 question: "Mujse Icecream kyu nhi share krna chahti Apna😄?",
                 options: { a: "Pura kha jaate h issilye😂", b: "Meri cheez mai kyu doon😄", c: "Aap bht gande hai😄" },
-                answer: "c" // You can change this!
+                answer: "c"
             }
         ];
 
-        // Function to show a specific section and hide others
+        // Function to show a specific section and hide others (unchanged)
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
@@ -333,29 +368,27 @@
             document.getElementById(sectionId).classList.add('active');
         }
 
-        // Confetti effect
+        // Confetti effect (unchanged)
         function triggerConfetti() {
-            const colors = ['#ffcc00', '#ff66b2', '#66ccff', '#99ff66', '#cc66ff']; // Festive colors
-            for (let i = 0; i < 100; i++) { // Generate 100 confetti pieces
+            const colors = ['#ffcc00', '#ff66b2', '#66ccff', '#99ff66', '#cc66ff'];
+            for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; // Random color
-                confetti.style.animationDelay = Math.random() * 2 + 's'; // Stagger animations
-                confetti.style.transform = `scale(${Math.random() * 0.8 + 0.2})`; // Random size
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.transform = `scale(${Math.random() * 0.8 + 0.2})`;
                 document.body.appendChild(confetti);
-
-                // Remove confetti after animation to prevent DOM clutter
                 confetti.addEventListener('animationend', () => {
                     confetti.remove();
                 });
             }
         }
 
-        // Image slider logic (retained from previous version)
+        // Image slider logic (unchanged)
         let slideIndex = 0;
         const sliderImagesContainer = document.getElementById('imageSlider');
-        let images = []; // Will be populated on window.onload
+        let images = [];
 
         function showSlides() {
             if (images.length === 0) return;
@@ -375,7 +408,7 @@
         function startAutoSlide() {
             autoSlideInterval = setInterval(() => {
                 changeSlide(1);
-            }, 1400); // Change slide every 1.4 seconds
+            }, 3000);
         }
 
         function resetAutoSlide() {
@@ -383,21 +416,78 @@
             startAutoSlide();
         }
 
-        // Event Listeners
+        // --- NEW Combined Logic for Welcome Screen and Main Content ---
         document.addEventListener('DOMContentLoaded', function() {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const enterButton = document.getElementById('enterButton');
+            const mainHeader = document.getElementById('main-header');
+            const mainContent = document.getElementById('main-content');
+            const mainFooter = document.getElementById('main-footer');
+            const birthdaySong = document.getElementById('birthdaySong');
+            const audioControl = document.getElementById('audioControl');
+            const audioIcon = document.getElementById('audioIcon');
+            const audioText = document.getElementById('audioText');
+
+            // Set initial visibility: only welcome screen is visible
+            welcomeScreen.classList.remove('hidden');
+            mainHeader.classList.add('hidden');
+            mainContent.classList.add('hidden');
+            mainFooter.classList.add('hidden');
+            audioControl.classList.add('hidden'); // Hide audio control initially
+
+            // Event listener for the "Enter, Sweetheart!" button
+            enterButton.addEventListener('click', function() {
+                // Hide welcome screen
+                welcomeScreen.style.display = 'none';
+
+                // Show main content elements
+                mainHeader.classList.remove('hidden');
+                mainContent.classList.remove('hidden');
+                mainFooter.classList.remove('hidden');
+                audioControl.classList.remove('hidden'); // Show audio control
+
+                // Explicitly play the song
+                birthdaySong.play()
+                    .then(() => {
+                        console.log("Song started playing!");
+                        // Ensure button state is correct if play succeeds
+                        audioIcon.textContent = '🔊';
+                        audioText.textContent = 'Unmuted';
+                        birthdaySong.muted = false; // Just to be explicit
+                    })
+                    .catch(e => {
+                        console.error("Error playing song:", e);
+                        // If it fails, set button state to muted and alert user
+                        audioIcon.textContent = '🔇';
+                        audioText.textContent = 'Muted';
+                        birthdaySong.muted = true; // Set to muted if play fails
+                        alert("Music could not autoplay. Please click the speaker icon to enable sound!");
+                    });
+
+                // Initialize the slider and auto-slide once content is visible
+                images = document.querySelectorAll('#imageSlider img');
+                if (images.length > 0) {
+                    showSlides(); // Display the first slide
+                    startAutoSlide(); // Start automatic slideshow
+                }
+            });
+
+
+            // Quiz section and other functionalities remain largely the same,
+            // just ensuring they are within the `main-content` section that becomes visible.
+
             // Surprise button click -> go to quiz
             document.getElementById('surpriseButton').addEventListener('click', function() {
-                triggerConfetti(); // Still trigger confetti on the birthday page
-                // Removed setTimeout for immediate transition to quiz
+                triggerConfetti();
                 showSection('quiz-section');
             });
 
             // Quiz form submission
             document.getElementById('birthdayQuiz').addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent default form submission
+                event.preventDefault();
                 let score = 0;
                 const quizReviewDiv = document.getElementById('quiz-review');
-                quizReviewDiv.innerHTML = '<h3 class="text-2xl font-bold text-purple-600 mb-4">Your Answers:</h3>'; // Clear previous content
+                quizReviewDiv.innerHTML = '<h3 class="text-2xl font-bold text-purple-600 mb-4">Your Answers:</h3>';
 
                 quizQuestions.forEach((q, index) => {
                     const questionNumber = index + 1;
@@ -410,7 +500,6 @@
                         score++;
                     }
 
-                    // Append question review to the score card
                     const questionReviewHtml = `
                         <div class="mb-4 p-3 border-b border-gray-200 last:border-b-0">
                             <p class="font-semibold text-gray-800">${questionNumber}. ${q.question}</p>
@@ -423,20 +512,20 @@
 
                 document.getElementById('quiz-score').textContent = `Your Score: ${score}/${quizQuestions.length}`;
                 showSection('score-card-section');
-                triggerConfetti(); // Trigger confetti again on score card
+                triggerConfetti();
             });
 
             // Back to birthday message button
             document.getElementById('backToBirthdayButton').addEventListener('click', function() {
                 showSection('birthday-message-section');
-                resetAutoSlide(); // Restart auto-slide if going back
+                resetAutoSlide();
             });
 
-            // Initialize on window load
+            // Special date message check
             const today = new Date();
             const birthdayMonth = 6; // July is 6 (0-indexed)
             const birthdayDay = 20;
-            const birthdayYear = 2025; // Specific year for the birthday
+            const birthdayYear = 2025; // Current year is 2025
 
             if (today.getMonth() === birthdayMonth &&
                 today.getDate() === birthdayDay &&
@@ -444,12 +533,19 @@
                 document.getElementById('special-date-message').classList.remove('hidden');
             }
 
-            // Initialize the slider after images are loaded
-            images = document.querySelectorAll('#imageSlider img');
-            if (images.length > 0) {
-                showSlides(); // Display the first slide
-                startAutoSlide(); // Start automatic slideshow
-            }
+            // Toggle mute/unmute on audio control button click
+            audioControl.addEventListener('click', () => {
+                if (birthdaySong.muted) {
+                    birthdaySong.muted = false;
+                    audioIcon.textContent = '🔊';
+                    audioText.textContent = 'Unmuted';
+                    birthdaySong.play().catch(e => console.error("Error playing unmuted:", e)); // Try to play if it was paused
+                } else {
+                    birthdaySong.muted = true;
+                    audioIcon.textContent = '🔇';
+                    audioText.textContent = 'Muted';
+                }
+            });
         });
     </script>
 </body>
