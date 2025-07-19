@@ -62,8 +62,9 @@
             width: 100%;
             display: block;
             flex-shrink: 0; /* Prevent images from shrinking */
-            object-fit: cover;
-            height: 450px; /* Fixed height for consistency */
+            object-fit: contain; /* Changed from 'cover' to 'contain' */
+            height: auto; /* Changed from fixed height to auto */
+            max-height: 450px; /* Added max-height to prevent overly large images */
         }
 
         .slider-button {
@@ -127,7 +128,7 @@
             <!-- Photo Slider -->
             <div class="mb-8 slider-container">
                 <div class="slider-images" id="imageSlider">
-                    <!-- Replace these placeholder images with your actual photos -->
+                    <!-- IMPORTANT: Replace these local paths with public image URLs if sharing online -->
                     <img src="SINGLE4.jpeg" alt="Special Photo 1">
                     <img src="SINGLE2.jpeg" alt="Special Photo 2">
                     <img src="SINGLE3.jpeg" alt="Special Photo 3">
@@ -137,11 +138,11 @@
                 <button class="slider-button next" onclick="changeSlide(1)">&#10095;</button>
             </div>
 
-           <p class="text-xl text-gray-800 leading-relaxed mb-6">
-    Aaj aapka birthday hai mohtarma, aur aaj app ek saal aur budhi ho gyi 🥹, mai khush ho ya udaas samagh nhi aa rha hai kyuki aapka aaj birthday hai to khush hi ho jaata hoon 😄. Khair aap bhi mere barbar aa gyi age mai 20 year, finally, humlog Niqqaah krne ke ek saal aur close aa gye h 😁😁... Bht accha lg rha hai mohtarma muhjhe to... Aur meri dua hai ki meri Wife humesha Ziddi rahe aur humesha mere se chocolate aur icecream maangti rhe 😂😂, aur mujhe humesha pasand aur pyaar krti rahe 😊😊.<br><br>
-    Love you love you love you love you love you love you sooooo muchhhh Mohtarma 😘😘😘😘
-</p>
- <p class="text-xl text-gray-800 leading-relaxed mb-8">
+            <p class="text-xl text-gray-800 leading-relaxed mb-6">
+                Aaj aapka birthday hai mohtarma, aur aaj app ek saal aur budhi ho gyi 🥹, mai khush ho ya udaas samagh nhi aa rha hai kyuki aapka aaj birthday hai to khush hi ho jaata hoon 😄. Khair aap bhi mere barbar aa gyi age mai 20 year, finally, humlog Niqqaah krne ke ek saal aur close aa gye h 😁😁... Bht accha lg rha hai mohtarma muhjhe to... Aur meri dua hai ki meri Wife humesha Ziddi rahe aur humesha mere se chocolate aur icecream maangti rhe 😂😂, aur mujhe humesha pasand aur pyaar krti rahe 😊😊.<br><br>
+                Love you love you love you love you love you love you sooooo muchhhh Mohtarma 😘😘😘😘
+            </p>
+            <p class="text-xl text-gray-800 leading-relaxed mb-8">
                 May your day be filled with joy, surprises, and everything you wish for.
                 I cherish you more than words can say.
             </p>
@@ -266,8 +267,15 @@
                 </p>
             </div>
 
+            <!-- Quiz Review Section -->
+            <div id="quiz-review" class="text-left mt-8 p-6 bg-gray-50 rounded-lg shadow-inner">
+                <h3 class="text-2xl font-bold text-purple-600 mb-4">Your Answers:</h3>
+                <!-- Answers will be dynamically inserted here -->
+            </div>
+
             <!-- Photo Frame -->
-            <div class="relative w-full max-w-md mx-auto mb-8 border-8 border-purple-300 rounded-xl shadow-xl overflow-hidden">
+            <div class="relative w-full max-w-md mx-auto mt-8 mb-8 border-8 border-purple-300 rounded-xl shadow-xl overflow-hidden">
+                <!-- IMPORTANT: Replace this local path with a public image URL if sharing online -->
                 <img src="TWO.jpeg" alt="Our Couple Photo" class="w-full h-auto object-cover rounded-md">
                 <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 text-white text-2xl font-bold opacity-0 hover:opacity-100 transition-opacity duration-300">
                     <p>Our Beautiful Memorie</p>
@@ -296,24 +304,24 @@
         // Quiz Questions and Answers
         const quizQuestions = [
             {
-                question: "What's our favorite shared memory?",
-                options: { a: "Our first date", b: "That rainy day adventure", c: "The trip to the mountains" },
-                answer: "b" // You can change this to the correct answer for your girlfriend!
+                question: "Humara first Kiss Kaha hua hai?",
+                options: { a: "Tumhare Ghar mai", b: "Mere ghar mai", c: "Mamma ke ghar mai" },
+                answer: "c" // You can change this to the correct answer for your girlfriend!
             },
             {
-                question: "What quality do I admire most about you?",
-                options: { a: "Your kindness", b: "Your sense of humor", c: "Your strength" },
+                question: "Pyaar hone se pehle kitna gussa aata tha mere pr jb hum arham ko maarte the😂?",
+                options: { a: "Thora sa", b: "Tabhi bhi pyaar krte the😂", c: "Bht gussa krte the" },
                 answer: "a" // You can change this!
             },
             {
-                question: "If we were a song, what genre would we be?",
-                options: { a: "Romantic Ballad", b: "Upbeat Pop", c: "Soulful Jazz" },
-                answer: "a" // You can change this!
+                question: "Sach batana Mohtarma app apne aap ko fit sirf mere liye rakhna chahti ho na😂??",
+                options: { a: "HAAA😂", b: "HAAA😂", c: "Chup rahiye Aap😂😂" },
+                answer: "b" // You can change this!
             },
             {
-                question: "What's my favorite thing to do with you?",
-                options: { a: "Having deep conversations", b: "Exploring new places", c: "Just cuddling and watching movies" },
-                answer: "a" // You can change this!
+                question: "Mujse Icecream kyu nhi share krna chahti Apna😄?",
+                options: { a: "Pura kha jaate h issilye😂", b: "Meri cheez mai kyu doon😄", c: "Aap bht gande hai😄" },
+                answer: "c" // You can change this!
             }
         ];
 
@@ -367,7 +375,7 @@
         function startAutoSlide() {
             autoSlideInterval = setInterval(() => {
                 changeSlide(1);
-            }, 1400); // Change slide every 5 seconds
+            }, 1400); // Change slide every 1.4 seconds
         }
 
         function resetAutoSlide() {
@@ -380,21 +388,39 @@
             // Surprise button click -> go to quiz
             document.getElementById('surpriseButton').addEventListener('click', function() {
                 triggerConfetti(); // Still trigger confetti on the birthday page
-                setTimeout(() => { // Give a moment for confetti to show before transitioning
-                    showSection('quiz-section');
-                }, 500);
+                // Removed setTimeout for immediate transition to quiz
+                showSection('quiz-section');
             });
 
             // Quiz form submission
             document.getElementById('birthdayQuiz').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent default form submission
                 let score = 0;
+                const quizReviewDiv = document.getElementById('quiz-review');
+                quizReviewDiv.innerHTML = '<h3 class="text-2xl font-bold text-purple-600 mb-4">Your Answers:</h3>'; // Clear previous content
+
                 quizQuestions.forEach((q, index) => {
-                    const selectedOption = document.querySelector(`input[name="q${index + 1}"]:checked`);
-                    if (selectedOption && selectedOption.value === q.answer) {
+                    const questionNumber = index + 1;
+                    const selectedOptionInput = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+                    const selectedValue = selectedOptionInput ? selectedOptionInput.value : 'not answered';
+                    const selectedText = selectedOptionInput ? selectedOptionInput.nextElementSibling.textContent : 'Not Answered';
+                    const correctAnswerText = q.options[q.answer];
+
+                    if (selectedValue === q.answer) {
                         score++;
                     }
+
+                    // Append question review to the score card
+                    const questionReviewHtml = `
+                        <div class="mb-4 p-3 border-b border-gray-200 last:border-b-0">
+                            <p class="font-semibold text-gray-800">${questionNumber}. ${q.question}</p>
+                            <p class="text-gray-700 ml-4">Your Answer: <span class="${selectedValue === q.answer ? 'text-green-600' : 'text-red-600'} font-medium">${selectedText}</span></p>
+                            <p class="text-gray-700 ml-4">Correct Answer: <span class="text-blue-600 font-medium">${correctAnswerText}</span></p>
+                        </div>
+                    `;
+                    quizReviewDiv.insertAdjacentHTML('beforeend', questionReviewHtml);
                 });
+
                 document.getElementById('quiz-score').textContent = `Your Score: ${score}/${quizQuestions.length}`;
                 showSection('score-card-section');
                 triggerConfetti(); // Trigger confetti again on score card
